@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-	"prepare": "husky install",
+    "prepare": "husky install",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -39,11 +39,17 @@
     "@types/jest": "28.1.8",
     "@types/node": "^16.0.0",
     "@types/supertest": "^2.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
-    "eslint": "^8.0.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.1",
     "jest": "28.1.3",
     "lint-staged": "^13.0.3",
@@ -74,12 +80,12 @@
     "testEnvironment": "node"
   },
   "lint-staged": {
-	"*.{js,tsx,ts}": [
-		"prettier --write",
-		"eslint --fix"
-	],
-	"*.md": [
-		"prettier --write"
-	]
-}
+    "*.{js,tsx,ts}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
+  }
 }
