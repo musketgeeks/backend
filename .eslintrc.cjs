@@ -24,25 +24,28 @@ module.exports = {
 		node: true,
 		jest: true
 	},
-	extends: ['airbnb', 'plugin:prettier/recommended'],
-	plugins: ['prettier'],
-	rules: {
-		'prettier/prettier': ['error', { usePrettierrc: true }]
-	},
+	// extends: ['airbnb-base', 'plugin:prettier/recommended'],
+	// plugins: ['prettier'],
+	// rules: {
+	// 	'prettier/prettier': ['error', { usePrettierrc: true }]
+	// },
 	overrides: [
 		{
 			// Rules for TypeScript
 			files: ['*.ts', '*.tsx'],
+			extends: [
+				'plugin:@typescript-eslint/recommended',
+				'airbnb-base',
+				'airbnb-typescript/base',
+				'plugin:prettier/recommended',
+				'prettier'
+			],
 			plugins: [
 				'@typescript-eslint/eslint-plugin',
 				'simple-import-sort',
 				'import',
-				'unused-imports'
-			],
-			extends: [
-				'plugin:@typescript-eslint/recommended',
-				'airbnb-base',
-				'airbnb-typescript/base'
+				'unused-imports',
+				'prettier'
 			],
 			excludedFiles: ['*.js', '*.cjs', '*.mjs'],
 			parserOptions: {
@@ -67,6 +70,7 @@ module.exports = {
 						leadingUnderscore: 'allow'
 					}
 				],
+				'@typescript-eslint/indent': 'off',
 				'import/prefer-default-export': 'off',
 				'import/no-cycle': 'off',
 				'simple-import-sort/exports': 'error',
@@ -95,14 +99,20 @@ module.exports = {
 							['^\\.', '^']
 						]
 					}
-				]
+				],
+				'prettier/prettier': ['error', { usePrettierrc: true }]
 			}
 		},
 		{
 			// For config files
-			files: ['.eslintrc.cjs', 'commitlint.config.cjs', 'next.config.cjs'],
+			files: ['.eslintrc.cjs', 'commitlint.config.cjs', '*.cjs'],
 			env: {
 				node: true
+			},
+			extends: ['airbnb-base', 'plugin:prettier/recommended'],
+			plugins: ['prettier'],
+			rules: {
+				'prettier/prettier': ['error', { usePrettierrc: true }]
 			}
 		}
 	]
