@@ -24,11 +24,11 @@ module.exports = {
 		node: true,
 		jest: true
 	},
-	// extends: ['airbnb-base', 'plugin:prettier/recommended'],
-	// plugins: ['prettier'],
-	// rules: {
-	// 	'prettier/prettier': ['error', { usePrettierrc: true }]
-	// },
+	extends: ['airbnb-base', 'prettier'],
+	plugins: ['prettier'],
+	rules: {
+		'prettier/prettier': ['error', { usePrettierrc: true }]
+	},
 	overrides: [
 		{
 			// Rules for TypeScript
@@ -36,16 +36,13 @@ module.exports = {
 			extends: [
 				'plugin:@typescript-eslint/recommended',
 				'airbnb-base',
-				'airbnb-typescript/base',
-				'plugin:prettier/recommended',
-				'prettier'
+				'airbnb-typescript/base'
 			],
 			plugins: [
 				'@typescript-eslint/eslint-plugin',
 				'simple-import-sort',
 				'import',
-				'unused-imports',
-				'prettier'
+				'unused-imports'
 			],
 			excludedFiles: ['*.js', '*.cjs', '*.mjs'],
 			parserOptions: {
@@ -99,8 +96,7 @@ module.exports = {
 							['^\\.', '^']
 						]
 					}
-				],
-				'prettier/prettier': ['error', { usePrettierrc: true }]
+				]
 			}
 		},
 		{
@@ -108,11 +104,6 @@ module.exports = {
 			files: ['.eslintrc.cjs', 'commitlint.config.cjs', '*.cjs'],
 			env: {
 				node: true
-			},
-			extends: ['airbnb-base', 'plugin:prettier/recommended'],
-			plugins: ['prettier'],
-			rules: {
-				'prettier/prettier': ['error', { usePrettierrc: true }]
 			}
 		}
 	]
