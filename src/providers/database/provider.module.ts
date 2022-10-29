@@ -15,7 +15,8 @@ import { DatabaseConfigService } from '@config/database/config.service';
 				username: dbConfigService.user,
 				password: dbConfigService.password,
 				database: dbConfigService.name,
-				entities: []
+				entities: ['**/*.entity.{js,ts}'],
+				autoLoadEntities: true
 			}),
 			inject: [DatabaseConfigService]
 		} as TypeOrmModuleAsyncOptions)
