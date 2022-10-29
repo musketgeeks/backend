@@ -14,7 +14,8 @@ import { DatabaseConfigService } from '@config/database/config.service';
 				port: dbConfigService.port,
 				username: dbConfigService.user,
 				password: dbConfigService.password,
-				database: dbConfigService.name
+				database: dbConfigService.name,
+				entities: []
 			}),
 			inject: [DatabaseConfigService]
 		} as TypeOrmModuleAsyncOptions)
