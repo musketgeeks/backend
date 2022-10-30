@@ -1,4 +1,4 @@
-import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppConfigService } from '@app/config/app/config.service';
@@ -12,11 +12,6 @@ async function bootstrap() {
 		app.get<AppConfigService>(AppConfigService);
 
 	app.enableCors();
-
-	app.enableVersioning({
-		type: VersioningType.URI,
-		defaultVersion: '1'
-	});
 
 	await app
 		.useGlobalPipes(
