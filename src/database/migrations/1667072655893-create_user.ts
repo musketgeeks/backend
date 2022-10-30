@@ -42,7 +42,8 @@ export class createUser1667072655893 implements MigrationInterface {
 						name: 'role',
 						type: 'varchar',
 						isNullable: false,
-						enum: ['super-admin', 'admin', 'user']
+						enum: ['super-admin', 'admin', 'user'],
+						default: 'user'
 					},
 					...timestampsFields
 				]
