@@ -1,14 +1,15 @@
-import { ValidationPipe } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+
+import { AppConfigService } from '@app/config/app/config.service';
 
 import { AppModule } from './app.module';
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule);
 
-	const configService = app.get<ConfigService>(ConfigService);
-	const appConfig = configService.get('app');
+	const appConfig: AppConfigService =
+		app.get<AppConfigService>(AppConfigService);
 
 	app.enableCors();
 
@@ -20,7 +21,9 @@ async function bootstrap() {
 				transform: true
 			})
 		)
-		.listen(appConfig.get('app.port'));
+		.listen(appConfig.port, () =>
+			Logger.log(`Backend running on port ${appConfig.port}`)
+		);
 }
 
 bootstrap();

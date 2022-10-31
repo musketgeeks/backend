@@ -680,5 +680,4 @@ $RECYCLE.BIN/
 
 .fleet/
 
-!.env.*.example
-.env.database
+./docker/**/.env

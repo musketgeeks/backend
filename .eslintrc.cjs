@@ -5,7 +5,7 @@ const folders = fs
 	.filter((dirent) => dirent.isDirectory())
 	.map((dirent) => dirent.name);
 
-const foldersPaths = ['@app', '@test'];
+const foldersPaths = ['@app', '@test', '@config', '@modules', '@database', '@common', '@providers'];
 
 const noUnusedVarRule = [
 	'error',
@@ -27,19 +27,19 @@ module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		project: 'tsconfig.json',
-		sourceType: 'module',
+		sourceType: 'module'
 	},
 	plugins: [
 		'@typescript-eslint/eslint-plugin',
 		'simple-import-sort',
 		'import',
 		'unused-imports',
-		'prettier',
+		'prettier'
 	],
 	extends: [
 		'plugin:@typescript-eslint/recommended',
 		'plugin:prettier/recommended',
-		'prettier',
+		'prettier'
 	],
 	rules: {
 		curly: 'error',
@@ -103,6 +103,13 @@ module.exports = {
 				'import/no-extraneous-dependencies': 'off',
 				'prettier/prettier': ['error', { usePrettierrc: true }]
 			}
+		},
+		{
+			files: ['./src/database/migrations/**/*.ts'],
+			rules: {
+				'@typescript-eslint/no-empty-function': 'off'
+			}
 		}
+
 	]
 };
