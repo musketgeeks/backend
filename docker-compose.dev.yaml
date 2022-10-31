@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  database:
+    container_name: "musketgeeks_db"
+    image: "postgres"
+
+    restart: "always"
+
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+
+    networks:
+      - musketgeeks-network
+
+    ports:
+      - ${DATABASE_OUTSIDE_PORT}:5432
+
+  backend:
+    build:
+      context: ./
+      target: development
+      dockerfile: Dockerfile
+
+    image: "musketgeeks_backend-dev"
+    container_name: "musketgeeks_backend-dev"
+
+    depends_on:
+      - database
+
+    env_file:
+      - ./.env
+
+    restart: "unless-stopped"
+
+    volumes:
+      - ./:/var/www/backend
+      - /var/www/backend/node_modules
+
+    networks:
+      - musketgeeks-network
+
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+      - "9229:9229" # debug port
+
+# Networks
+networks:
+  musketgeeks-network:
+    driver: bridge
