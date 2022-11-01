@@ -14,7 +14,7 @@ import {
 import { Role } from '@common/enums/Role';
 
 @Entity('users')
-export class User extends BaseEntity {
+export class UserEntity extends BaseEntity {
 	@PrimaryGeneratedColumn('uuid')
 	readonly id: string;
 
