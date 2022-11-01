@@ -18,18 +18,19 @@ const ormDbConfig: PostgresConnectionOptions = {
 };
 
 const ormDevConfig: Partial<PostgresConnectionOptions> = {
-	migrations: ['./src/database/migrations/*.{js,ts}'],
-	entities: ['./src/**/*.entity.ts']
+	migrations: ['src/database/migrations/*.{js,ts}']
+	// entities: ['src/modules/**/entities/*.entity.ts']
 	// synchronize: true
 };
 
 const ormProdConfig: Partial<PostgresConnectionOptions> = {
 	migrations: ['dist/database/migrations/*.{js}'],
+	// entities: ['dist/modules/**/entities/*.entity.js'],
 	synchronize: false
 };
 
 const envConfig =
-	process.env.NODEE_ENV === 'production' ? ormProdConfig : ormDevConfig;
+	process.env.NODE_ENV === 'production' ? ormProdConfig : ormDevConfig;
 
 export const OrmConfig: PostgresConnectionOptions = {
 	...ormDbConfig,

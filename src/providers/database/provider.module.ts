@@ -16,7 +16,7 @@ import { DatabaseConfigService } from '@config/database/config.service';
 				username: dbConfigService.user,
 				password: dbConfigService.password,
 				database: dbConfigService.name,
-				entities: ['**/*.entity.{js,ts}'],
+				entities: ['./../modules/**/entities/*.entity.ts'],
 				autoLoadEntities: true
 			}),
 			inject: [DatabaseConfigService]
