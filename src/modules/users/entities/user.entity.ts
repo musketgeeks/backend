@@ -11,7 +11,7 @@ import {
 	UpdateDateColumn
 } from 'typeorm';
 
-import { Role } from '@modules/users/enums/Role';
+import { Role } from '@common/enums/Role';
 
 @Entity('users')
 export class User extends BaseEntity {
