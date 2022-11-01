@@ -12,6 +12,7 @@ import {
 } from 'typeorm';
 
 import { Role } from '@common/enums/Role';
+import { generateUsername } from '@common/helpers/generate-username.helper';
 
 @Entity('users')
 export class UserEntity extends BaseEntity {
@@ -24,7 +25,7 @@ export class UserEntity extends BaseEntity {
 	@Column({ unique: true })
 	email: string;
 
-	@Column({ unique: true })
+	@Column({ unique: true, nullable: true })
 	username: string;
 
 	@Column()
@@ -50,6 +51,15 @@ export class UserEntity extends BaseEntity {
 			// Create env for salt
 			const salt = await genSalt();
 			this.password = await hash(this.password, salt);
+		}
+	}
+
+	@BeforeInsert()
+	@BeforeUpdate()
+	private async generateUsername() {
+		if (this.name && !this.username) {
+			// ex.: Daniel Sousa -> dsousa
+			this.username = generateUsername(this.name);
 		}
 	}
 }
