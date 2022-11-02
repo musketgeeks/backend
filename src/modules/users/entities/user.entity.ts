@@ -1,24 +1,13 @@
 import { genSalt, hash } from 'bcrypt';
 import { Exclude } from 'class-transformer';
-import {
-	BaseEntity,
-	BeforeInsert,
-	BeforeUpdate,
-	Column,
-	CreateDateColumn,
-	Entity,
-	PrimaryGeneratedColumn,
-	UpdateDateColumn
-} from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column, Entity } from 'typeorm';
 
+import { BaseEntity } from '@common/entities/base.entity';
 import { Role } from '@common/enums/Role';
 import { generateUsername } from '@common/helpers/generate-username.helper';
 
 @Entity('users')
 export class UserEntity extends BaseEntity {
-	@PrimaryGeneratedColumn('uuid')
-	readonly id: string;
-
 	@Column()
 	name: string;
 
@@ -35,14 +24,8 @@ export class UserEntity extends BaseEntity {
 	@Column({ nullable: true })
 	avatar: string;
 
-	@Column({ enum: Role })
+	@Column({ enum: Role, default: Role.User })
 	role: string;
-
-	@CreateDateColumn({ name: 'created_at', type: 'timestamp' })
-	createdAt: Date;
-
-	@UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
-	updatedAt: Date;
 
 	@BeforeInsert()
 	@BeforeUpdate()
