@@ -8,14 +8,13 @@ import { DatabaseProviderModule } from '@providers/database/provider.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ModuleModule } from './modules/places/module/module.module';
 import { CategoriesModule } from './modules/categories/categories/categories.module';
 import { PlacesModule } from './modules/places/places/places.module';
 import { TravelsModule } from './modules/travels/travels/travels.module';
 
 
 @Module({
-	imports: [AppConfigModule, DatabaseProviderModule, AuthModule, UsersModule, ModuleModule, CategoriesModule, PlacesModule, TravelsModule],
+	imports: [AppConfigModule, DatabaseProviderModule, AuthModule, UsersModule, CategoriesModule, PlacesModule, TravelsModule],
 	controllers: [AppController],
 	providers: [AppService, AppConfigService]
 })
