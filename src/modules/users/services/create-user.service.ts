@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { instanceToInstance } from 'class-transformer';
 import { Repository } from 'typeorm';
@@ -31,6 +31,7 @@ export class CreateUserService {
 		}
 
 		return {
+			code: HttpStatus.CREATED,
 			message: 'User created successfully!',
 			user: instanceToInstance(user)
 		};
