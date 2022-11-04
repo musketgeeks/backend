@@ -10,7 +10,7 @@ import { User } from '@modules/users/entities/user.entity';
 export class CreateUserService {
 	constructor(
 		@InjectRepository(User)
-		private repository: Repository<User>
+		private readonly repository: Repository<User>
 	) {}
 
 	async execute(userDto: CreateUserDto) {
