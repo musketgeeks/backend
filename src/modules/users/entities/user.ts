@@ -7,7 +7,7 @@ import { Role } from '@common/enums/Role';
 import { generateUsername } from '@common/helpers/generate-username.helper';
 
 @Entity('users')
-export class UserEntity extends BaseEntity {
+export class User extends BaseEntity {
 	@Column()
 	name: string;
 
