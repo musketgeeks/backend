@@ -1,5 +1,6 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { instanceToInstance } from 'class-transformer';
 import { Repository } from 'typeorm';
 
 import { User } from '@modules/users/entities/user.entity';
@@ -17,7 +18,7 @@ export class GetUsersService {
 		return {
 			code: HttpStatus.OK,
 			count: users.length,
-			users
+			users: users.map((user) => instanceToInstance(user))
 		};
 	}
 }
