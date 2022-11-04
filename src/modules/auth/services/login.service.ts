@@ -17,7 +17,7 @@ export class LoginService {
 		return this.jwtService.sign({ id: userId });
 	}
 
-	async login({ email, password }: LoginDto) {
+	async execute({ email, password }: LoginDto) {
 		const user = await this.getUserService.findByEmail(email);
 
 		if (!user) {

@@ -8,6 +8,7 @@ import { UsersModule } from '@modules/users/users.module';
 
 import { AuthController } from './auth.controller';
 import { LoginService } from './services/login.service';
+import { RegisterService } from './services/register.service';
 import { VerifyService } from './services/verify.service';
 
 @Module({
@@ -25,7 +26,7 @@ import { VerifyService } from './services/verify.service';
 			})
 		})
 	],
-	providers: [LoginService, VerifyService],
+	providers: [LoginService, VerifyService, RegisterService],
 	controllers: [AuthController]
 })
 export class AuthModule {}
