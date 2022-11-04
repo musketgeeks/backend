@@ -18,6 +18,10 @@ export class createCategories1667464086114 implements MigrationInterface {
 						name: 'description',
 						type: 'text'
 					},
+					{
+						name: 'image',
+						type: 'varchar'
+					},
 					...timestampsFields
 				]
 			})
