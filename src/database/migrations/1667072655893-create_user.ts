@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-import { timestampsFields } from '@database/helpers/timestamps-fields';
+import { timestampsFields } from '@database/helpers/timestamps.fields';
+import { uuidField } from '@database/helpers/uuid.field';
 
 export class createUser1667072655893 implements MigrationInterface {
 	public async up(queryRunner: QueryRunner): Promise<void> {
@@ -8,13 +9,7 @@ export class createUser1667072655893 implements MigrationInterface {
 			new Table({
 				name: 'users',
 				columns: [
-					{
-						name: 'id',
-						type: 'uuid',
-						isPrimary: true,
-						generationStrategy: 'uuid',
-						default: 'uuid_generate_v4()'
-					},
+					uuidField,
 					{
 						name: 'name',
 						type: 'varchar'
@@ -40,10 +35,11 @@ export class createUser1667072655893 implements MigrationInterface {
 					},
 					{
 						name: 'role',
-						type: 'varchar',
+						type: 'enum',
+						enumName: 'roles',
 						isNullable: false,
 						enum: ['super-admin', 'admin', 'user'],
-						default: 'user'
+						default: `'user'`
 					},
 					...timestampsFields
 				]

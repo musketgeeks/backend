@@ -31,7 +31,6 @@ export class UserEntity extends BaseEntity {
 	@BeforeUpdate()
 	private async generateHashPassword() {
 		if (this.password) {
-			// Create env for salt
 			const salt = await genSalt();
 			this.password = await hash(this.password, salt);
 		}
