@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 
+import { CommonModule } from '@common/common.module';
 import { AppConfigModule } from '@config/app/config.module';
 import { AppConfigService } from '@config/app/config.service';
 import { AuthModule } from '@modules/auth/auth.module';
@@ -20,7 +21,8 @@ import { AppService } from './app.service';
 		UsersModule,
 		CategoriesModule,
 		PlacesModule,
-		TravelsModule
+		TravelsModule,
+		CommonModule
 	],
 	controllers: [AppController],
 	providers: [AppService, AppConfigService]
