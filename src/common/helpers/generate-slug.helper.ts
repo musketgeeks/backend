@@ -37,7 +37,7 @@ const REPLACEMENTS = [
 	}
 ];
 
-export const generateSlugFromTitle = (title: string) => {
+export const generateSlug = (title: string) => {
 	let slug = title.toLocaleLowerCase().trim();
 
 	// Replaces

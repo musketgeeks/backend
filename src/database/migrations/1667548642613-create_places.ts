@@ -3,11 +3,11 @@ import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 import { timestampsFields } from '@database/helpers/timestamps.fields';
 import { uuidField } from '@database/helpers/uuid.field';
 
-export class createUser1667072655893 implements MigrationInterface {
+export class createPlaces1667548642613 implements MigrationInterface {
 	public async up(queryRunner: QueryRunner): Promise<void> {
 		await queryRunner.createTable(
 			new Table({
-				name: 'users',
+				name: 'places',
 				columns: [
 					uuidField,
 					{
@@ -15,31 +15,30 @@ export class createUser1667072655893 implements MigrationInterface {
 						type: 'varchar'
 					},
 					{
-						name: 'email',
-						type: 'varchar',
-						isUnique: true
-					},
-					{
-						name: 'username',
-						type: 'varchar',
-						isUnique: true
-					},
-					{
-						name: 'password',
+						name: 'slug',
 						type: 'varchar'
 					},
 					{
-						name: 'avatar',
-						type: 'varchar',
-						isNullable: true
+						name: 'description',
+						type: 'text'
 					},
 					{
-						name: 'role',
-						type: 'enum',
-						enumName: 'roles',
-						isNullable: false,
-						enum: ['super-admin', 'admin', 'user'],
-						default: `'user'`
+						// Latitude
+						name: 'lat',
+						type: 'varchar'
+					},
+					{
+						// Longitude
+						name: 'long',
+						type: 'varchar'
+					},
+					{
+						name: 'city',
+						type: 'varchar'
+					},
+					{
+						name: 'country',
+						type: 'varchar'
 					},
 					...timestampsFields
 				]
@@ -48,6 +47,6 @@ export class createUser1667072655893 implements MigrationInterface {
 	}
 
 	public async down(queryRunner: QueryRunner): Promise<void> {
-		await queryRunner.dropTable('users');
+		await queryRunner.dropTable('places');
 	}
 }
